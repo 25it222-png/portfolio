@@ -1,0 +1,402 @@
+
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>```html
+
+
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link href="./my webiste_files/css2" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0c10;
+      --surface: #13141a;
+      --border: #1e2030;
+      --accent: #6c63ff;
+      --text: #e8e9f0;
+      --muted: #7a7d96;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 6vw;
+      background: rgba(11,12,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 6rem 6vw 4rem; position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,99,255,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 700px; }
+    .hero-tag {
+      display: inline-block; background: rgba(108,99,255,0.12); color: var(--accent);
+      border: 1px solid rgba(108,99,255,0.3); border-radius: 100px;
+      padding: 0.3rem 1rem; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif; font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800; line-height: 1.05; color: var(--white); margin-bottom: 1rem;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-tagline { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.8rem 1.8rem; border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+      font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s;
+      border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; border: 2px solid var(--accent); }
+    .btn-primary:hover { background: #5a52e0; border-color: #5a52e0; transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--text); border: 2px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    section { padding: 5rem 6vw; }
+    .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--white); margin-bottom: 1rem; }
+    .divider { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 3rem; }
+
+    #about { border-top: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start; }
+    .about-img {
+      width: 200px; height: 200px; border-radius: 16px; border: 3px solid var(--border);
+      background: var(--surface); display: flex; align-items: center;
+      justify-content: center; font-size: 5rem;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; max-width: 600px; }
+
+    #skills { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; }
+    .skill-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.2rem 1rem; text-align: center; font-size: 0.88rem;
+      font-weight: 600; color: var(--text); transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-card .icon { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
+
+    #projects { border-top: 1px solid var(--border); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .project-thumb { height: 170px; background: linear-gradient(135deg, #1a1b2e, #2d2f4a); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .project-body { padding: 1.4rem; }
+    .project-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    .project-title { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .project-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 1rem; }
+    .project-links { display: flex; gap: 0.8rem; }
+    .project-links a {
+      font-size: 0.82rem; font-weight: 600; color: var(--accent); text-decoration: none;
+      border: 1px solid rgba(108,99,255,0.3); padding: 0.3rem 0.8rem;
+      border-radius: 6px; transition: background 0.2s;
+    }
+    .project-links a:hover { background: rgba(108,99,255,0.12); }
+
+    #resume { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .resume-box {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2.5rem; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; max-width: 700px;
+    }
+    .resume-box p { color: var(--muted); font-size: 0.95rem; max-width: 400px; }
+
+    #contact { border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 800px; }
+    .contact-info p { color: var(--muted); margin-bottom: 1.5rem; }
+    .contact-item { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; color: var(--text); text-decoration: none; font-size: 0.95rem; }
+    .contact-item .ci { font-size: 1.2rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input, .contact-form textarea {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 1.1rem; color: var(--text);
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--muted); }
+
+    #success-toast {
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, #1a2e1a, #0f1f0f);
+      border: 1px solid #2e6b2e;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      color: #6fcf6f;
+      font-size: 0.95rem;
+      font-weight: 600;
+      animation: slideIn 0.4s ease;
+    }
+    #success-toast.show { display: flex; }
+    #success-toast .toast-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(111,207,111,0.15);
+      border: 1.5px solid #2e6b2e;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    #success-toast .toast-text strong { display: block; color: #8fdf8f; font-size: 1rem; margin-bottom: 0.1rem; }
+    #success-toast .toast-text span { color: #5aaf5a; font-size: 0.82rem; font-weight: 400; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem 6vw;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; color: var(--muted); font-size: 0.85rem;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 4vw; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+
+
+
+<nav>
+  <div class="nav-logo">PREMALATHA U</div>
+  <ul class="nav-links">
+    <li><a href="http://127.0.0.1:5500/index.html#about">About</a></li>
+    <li><a href="http://127.0.0.1:5500/index.html#skills">Skills</a></li>
+    <li><a href="http://127.0.0.1:5500/index.html#projects">Projects</a></li>
+    <li><a href="http://127.0.0.1:5500/index.html#resume">Resume</a></li>
+    <li><a href="http://127.0.0.1:5500/index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">👋 Available for Work</span>
+    <h1 class="hero-name">Hi, I'm <span>PREMALATHA U</span></h1>
+    <p class="hero-tagline">A passionate web developer who builds clean, fast, and user-friendly digital experiences.</p>
+    <div class="hero-cta">
+      <a href="http://127.0.0.1:5500/index.html#projects" class="btn btn-primary">View My Work</a>
+      <a href="http://127.0.0.1:5500/index.html#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">About Me</div>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-img">🧑‍💻</div>
+    <div class="about-text">
+      <p>Hello! I'm <strong style="color:var(--white)">PREMALATHA U</strong>, a web developer based in Coimbatore.</p>
+      <p>I'm currently studying B.TECH (IT) at Sri Krishna College of Engineering and Technology.</p>
+      <p>When I'm not coding, I enjoy exploring new technologies and creative projects.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label">What I Know</div>
+  <div class="section-title">My Skills</div>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="skill-card"><span class="icon">🌐</span>HTML5</div>
+    <div class="skill-card"><span class="icon">🎨</span>CSS3</div>
+    <div class="skill-card"><span class="icon">⚡</span>JavaScript</div>
+    <div class="skill-card"><span class="icon">⚛️</span>React</div>
+    <div class="skill-card"><span class="icon">🟢</span>Node.js</div>
+    <div class="skill-card"><span class="icon">🗄️</span>MongoDB</div>
+    <div class="skill-card"><span class="icon">🐙</span>Git &amp; GitHub</div>
+    <div class="skill-card"><span class="icon">📱</span>Responsive Design</div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">What I've Built</div>
+  <div class="section-title">Projects</div>
+  <div class="divider"></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb">🛒</div>
+      <div class="project-body">
+        <div class="project-tag">HTML · CSS · JS</div>
+        <div class="project-title">E-Commerce Website</div>
+        <p class="project-desc">A fully responsive online store with product listings and cart functionality.</p>
+        <div class="project-links"><a href="http://127.0.0.1:5500/index.html#">Live Demo</a><a href="http://127.0.0.1:5500/index.html#">GitHub</a></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">☀️</div>
+      <div class="project-body">
+        <div class="project-tag">JavaScript · API</div>
+        <div class="project-title">Weather App</div>
+        <p class="project-desc">Real-time weather data from OpenWeather API with location search.</p>
+        <div class="project-links"><a href="http://127.0.0.1:5500/index.html#">Live Demo</a><a href="http://127.0.0.1:5500/index.html#">GitHub</a></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">✅</div>
+      <div class="project-body">
+        <div class="project-tag">React · LocalStorage</div>
+        <div class="project-title">Task Manager</div>
+        <p class="project-desc">A productivity app with drag-and-drop task management and persistent storage.</p>
+        <div class="project-links"><a href="http://127.0.0.1:5500/index.html#">Live Demo</a><a href="http://127.0.0.1:5500/index.html#">GitHub</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="section-label">My Resume</div>
+  <div class="section-title">Download CV</div>
+  <div class="divider"></div>
+  <div class="resume-box">
+    <p>Want to know more about my experience? Download my resume to get the full picture.</p>
+    <a href="file:///C:/Users/PREMA%20LATHA/Downloads/PREMALATHA%20U.resume.pdf" download="" class="btn btn-primary">⬇ Download Resume</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Let's Talk</div>
+  <div class="section-title">Contact Me</div>
+  <div class="divider"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>I'm open to freelance projects, internships, and full-time opportunities.</p>
+      <a href="mailto:25it222@skcet.ac.in" class="contact-item"><span class="ci">📧</span> 25it222@skcet.ac.in</a>
+      <a href="tel:+919043667281" class="contact-item"><span class="ci">📞</span> +91 9043667281</a>
+      <a href="https://www.linkedin.com/in/premalatha-u-349b143aa/" target="_blank" class="contact-item"><span class="ci">💼</span> linkedin.com/in/premalatha-u-349b143aa</a>
+      <a href="https://github.com/25it222-png" target="_blank" class="contact-item"><span class="ci">🐙</span> github.com/25it222-png</a>
+    </div>
+    <div class="contact-form">
+      <input type="text" id="fname" placeholder="Your Name">
+      <input type="email" id="femail" placeholder="Your Email">
+      <textarea id="fmessage" placeholder="Your Message"></textarea>
+
+      <div id="success-toast" class="">
+        <div class="toast-icon">✅</div>
+        <div class="toast-text">
+          <strong>Message Sent Successfully!</strong>
+          <span>Thank you! I'll get back to you soon.</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" onclick="sendMessage()">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 PREMALATHA U. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="https://github.com/25it222-png" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/premalatha-u-349b143aa/" target="_blank">LinkedIn</a>
+    <a href="file:///C:/Users/PREMA%20LATHA/Downloads/my%20webiste.html">Back to Top ↑</a>
+  </div>
+</footer>
+
+<script>
+  function sendMessage() {
+    const name    = document.getElementById('fname').value.trim();
+    const email   = document.getElementById('femail').value.trim();
+    const message = document.getElementById('fmessage').value.trim();
+
+    [['fname', name], ['femail', email], ['fmessage', message]].forEach(([id, val]) => {
+      document.getElementById(id).style.borderColor = val ? '' : '#ff4d4d';
+    });
+
+    if (!name || !email || !message) return;
+
+    ['fname', 'femail', 'fmessage'].forEach(id => {
+      document.getElementById(id).style.borderColor = '';
+    });
+
+    const toast = document.getElementById('success-toast');
+    toast.classList.add('show');
+
+    document.getElementById('fname').value    = '';
+    document.getElementById('femail').value   = '';
+    document.getElementById('fmessage').value = '';
+
+    setTimeout(() => toast.classList.remove('show'), 5000);
+  }
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+```</body></html>
